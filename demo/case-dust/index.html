@@ -9,62 +9,59 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="toputil"><div class="wrap"><span>欢迎访问河北蓝洁除尘设备有限公司官方网站</span><span>销售热线：<a href="tel:15600000000">156-0000-0000</a>（李经理）</span></div></div>
-<header class="site-header"><div class="wrap header-in">
+<div class="topbar"><div class="wrap">
 <a class="logo" href="index.html"><span class="logo-mark">蓝</span><span><span class="logo-name">河北蓝洁除尘设备有限公司</span><br><span class="logo-en">Lanjie Dust Removal Equipment</span></span></a>
-<button class="burger" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="菜单">☰</button>
-<nav class="main-nav"><a href="index.html" class="active">首页</a><a href="products.html" class="">产品中心</a><a href="about.html" class="">关于我们</a><a href="workshop.html" class="">厂区展示</a><a href="news.html" class="">新闻中心</a><a href="contact.html" class="">联系我们</a></nav>
-<div class="head-tel"><small>全国销售热线</small><b>156-0000-0000</b></div>
-</div></header>
-<section class="hero"><img class="hero-bg" src="assets/img_hero.jpg" alt="除尘设备工程现场">
-<div class="wrap hero-in"><div class="en">Dust Removal Equipment Manufacturer</div>
-<h1>工业除尘设备<br>按工况选型 · 排放达标</h1>
-<p>河北蓝洁除尘设备有限公司是制作除尘设备，小型锅炉除尘器、木工除尘器、布袋除尘器、脱硫除尘设备、除尘器布袋，脉冲布袋除尘器，除尘配件等生产企业。我公司采取“依靠科技，不断创……</p>
-<div class="hero-btns"><a class="btn" href="products.html">查看产品中心</a><a class="btn ghost" href="tel:15600000000">☎ 156-0000-0000</a></div>
-</div></section>
-<div class="wrap searchbar"><div class="search-card"><span class="hot">热门分类：<a href="category-glccq.html">锅炉除尘器</a>、<a href="category-bdccq.html">布袋除尘器</a>、<a href="category-djccq.html">单机除尘器</a>、<a href="category-mgccq.html">木工除尘器</a>、<a href="category-tlccq.html">脱硫除尘器</a></span>
-<form class="search-form" action="products.html" method="get"><input name="q" placeholder="输入产品名称搜索，如：布袋除尘器"><button type="submit">搜索</button></form></div></div>
+<div class="top-help"><small>NEED HELP? CONTACT US</small><b>156-0000-0000</b><span>联系人：李经理 · 电话 0317-8300-000</span></div>
+</div></div>
+<nav class="navbar"><button class="burger" onclick="document.querySelector('.navbar .wrap').classList.toggle('open')">☰ 菜单</button><div class="wrap"><a href="index.html" class="active">首页 HOME</a><a href="products.html" class="">产品中心 PRODUCTS</a><a href="about.html" class="">关于我们 ABOUT</a><a href="workshop.html" class="">厂区展示 GALLERY</a><a href="news.html" class="">新闻中心 NEWS</a><a href="contact.html" class="">联系我们 CONTACT</a></div></nav>
+<section class="hero"><div class="slide on"><img src="assets/img_hero.jpg" alt=""><div class="panel org"><div class="en">Complete Product Line</div><h2><span class="bold">产品线齐全</span><span class="thin">七大品类 · 五十一款型号</span></h2><p>锅炉、布袋、单机、木工、脱硫、旋风除尘器与布袋配件，整机与配件一站配齐。</p><a class="sq" href="products.html">&rsaquo;</a></div></div><div class="slide"><img src="assets/img_085.jpg" alt=""><div class="panel dark"><div class="en">Engineered For Your Conditions</div><h2><span class="bold">按实际工况</span><span class="thin">选型 · 排放达标</span></h2><p>工程师根据锅炉吨位、粉尘类型与处理风量，给出科学合理的选型方案。</p><a class="sq" href="products.html">&rsaquo;</a></div></div><div class="slide"><img src="assets/img_086.jpg" alt=""><div class="panel white"><div class="en">Proven In Tough Industries</div><h2><span class="bold">砖厂隧道窑</span><span class="thin">高温高湿烟气治理</span></h2><p>针对湿度大、温度高、腐蚀性强的窑炉烟气，采用不锈钢壳体湿式静电除尘方案。</p><a class="sq" href="products.html">&rsaquo;</a></div></div><div class="dots"><i class="on" onclick="goSlide(0)"></i><i class="" onclick="goSlide(1)"></i><i class="" onclick="goSlide(2)"></i></div></section>
+<script>
+var cur=0,slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dots i');
+function goSlide(i){slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=i;slides[cur].classList.add('on');dots[cur].classList.add('on');}
+setInterval(function(){goSlide((cur+1)%slides.length);},6000);
+</script>
 <section class="section"><div class="wrap">
-<div class="sec-head"><div class="en">About Us</div><h2>关于我们</h2><div class="bar"></div></div>
-<div class="about-grid"><div class="ph"><img src="assets/img_085.jpg" alt="除尘设备工程全景" loading="lazy"></div>
-<div class="about-txt"><h3>河北蓝洁除尘设备有限公司</h3><p>河北蓝洁除尘设备有限公司是制作除尘设备，小型锅炉除尘器、木工除尘器、布袋除尘器、脱硫除尘设备、除尘器布袋，脉冲布袋除尘器，除尘配件等生产企业。我公司采取“依靠科技，不断创新，紧密加工”的质量方针，秉承“诚信经营，品质优良，服务周到”的经营理念，始终坚持“质量第一、价格合理、信守合同、并提供可靠的技术服务，代办托运”的企业宗旨，为广大客户提供更加优惠的产品以及更加优质的服务。</p>
-<p>主营锅炉除尘器、布袋除尘器、单机除尘器、木工除尘器、脱硫除尘器、旋风除尘器与除尘布袋及配件，共 51 款产品。</p>
-<a class="more-link" href="about.html">查看更多 &gt;</a></div></div>
+<div class="h2a"><div class="en">Service Categories</div><h2>产品 <b>分类</b></h2><p>点击分类查看全部型号与详细介绍</p></div>
+<div class="catgrid"><a class="catcard" href="category-glccq.html"><img src="assets/img_066.jpg" alt="锅炉除尘器" loading="lazy"><div class="cap"><b>锅炉除尘器</b><span>1-80 吨锅炉布袋除尘配套，按锅炉工况选型 · 共 8 款</span></div><span class="sq">&rsaquo;</span></a><a class="catcard" href="category-bdccq.html"><img src="assets/img_013.jpg" alt="布袋除尘器" loading="lazy"><div class="cap"><b>布袋除尘器</b><span>干式滤尘装置，清灰系统决定运行性能 · 共 8 款</span></div><span class="sq">&rsaquo;</span></a><a class="catcard" href="category-djccq.html"><img src="assets/img_051.jpg" alt="单机除尘器" loading="lazy"><div class="cap"><b>单机除尘器</b><span>体积小、处理风量大，专为局部尘源设计 · 共 8 款</span></div><span class="sq">&rsaquo;</span></a><a class="catcard" href="category-mgccq.html"><img src="assets/img_071.jpg" alt="木工除尘器" loading="lazy"><div class="cap"><b>木工除尘器</b><span>针对木工车间粉尘的专用除尘设备 · 共 7 款</span></div><span class="sq">&rsaquo;</span></a></div>
 </div></section>
-<section class="adv"><div class="wrap">
-<div class="adv-it"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><path d="M12 3l9.5 5L12 13 2.5 8z"/><path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5"/></svg><div><b>品类齐全</b><span>七大品类 51 款型号，整机与配件一站配齐</span></div></div>
-<div class="adv-it"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg><div><b>按工况选型</b><span>工程师根据实际工况提供选型方案</span></div></div>
-<div class="adv-it"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><path d="M12 3l7 2.6v5.2c0 4.6-3 8-7 10.2-4-2.2-7-5.6-7-10.2V5.6z"/><path d="M9 12l2.2 2.2L15.4 10"/></svg><div><b>排放达标</b><span>按环保排放要求设计除尘系统</span></div></div>
-<div class="adv-it"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4z"/><path d="M3.5 8L12 12l8.5-4M12 12v8"/></svg><div><b>配件供应</b><span>除尘布袋、骨架、脉冲阀等配件齐全</span></div></div>
-</div></section>
-<section class="section alt"><div class="wrap">
-<div class="sec-head"><div class="en">Products</div><h2>产品中心</h2><div class="bar"></div><p>点击产品查看详细介绍与参数</p></div>
-<div class="grid3"><a class="pcard" href="product-glccq-1.html"><div class="thumb"><img src="assets/img_066.jpg" alt="小型锅炉除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">锅炉除尘器</div><div class="pname">小型锅炉除尘器</div></div><span class="go">&rsaquo;</span></div></a><a class="pcard" href="product-bdccq-55.html"><div class="thumb"><img src="assets/img_013.jpg" alt="布袋除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">布袋除尘器</div><div class="pname">布袋除尘器</div></div><span class="go">&rsaquo;</span></div></a><a class="pcard" href="product-djccq-67.html"><div class="thumb"><img src="assets/img_068.jpg" alt="单机除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">单机除尘器</div><div class="pname">单机除尘器</div></div><span class="go">&rsaquo;</span></div></a><div class="pcard"><div class="thumb"><img src="assets/img_042.jpg" alt="生物质锅炉除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">锅炉除尘器</div><div class="pname">生物质锅炉除尘器</div></div><span class="go">&rsaquo;</span></div></div><div class="pcard"><div class="thumb"><img src="assets/img_069.jpg" alt="锅炉除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">锅炉除尘器</div><div class="pname">锅炉除尘器</div></div><span class="go">&rsaquo;</span></div></div><div class="pcard"><div class="thumb"><img src="assets/img_003.jpg" alt="大型电炉袋式除尘器" loading="lazy"></div><div class="pbody"><div><div class="pcat">锅炉除尘器</div><div class="pname">大型电炉袋式除尘器</div></div><span class="go">&rsaquo;</span></div></div></div>
-<div class="center-btn"><a class="btn dark" href="products.html">查看全部 51 款产品</a></div>
+<section class="section grey"><div class="wrap">
+<div class="h2a"><div class="en">Custom Design</div><h2>按工况 <b>定制选型</b></h2></div>
+<div class="cols2"><div><p style="color:#4a4a4a;margin-bottom:14px">河北蓝洁除尘设备有限公司是制作除尘设备，小型锅炉除尘器、木工除尘器、布袋除尘器、脱硫除尘设备、除尘器布袋，脉冲布袋除尘器，除尘配件等生产企业。我公司采取“依靠科技，不断创新，紧密加工”的质量方针，秉承“诚信经营，品质优良，服务周到”的经营理念，始终坚持“质量第一、价格合理、信守合同、并提供可靠的技术服务，代办托运”的企业宗旨，为广大客户提供更加优惠的产品以及更加优质的服务。</p>
+<p style="color:#4a4a4a;margin-bottom:20px">我公司技术工程师根据锅炉布袋除尘器实际工况，为您提供最科学、最合理的选型方案；可为工业用户提供 1-80 吨锅炉布袋除尘器、锅炉脱硫除尘器、火电厂除尘器等多规格产品，并提供维修、安装与改造服务。</p>
+<a class="sqbtn" href="about.html">READ MORE &rsaquo;</a></div>
+<div><img src="assets/img_085.jpg" alt="除尘工程全景" style="width:100%;height:100%;object-fit:cover;min-height:250px" loading="lazy"></div></div>
 </div></section>
 <section class="section"><div class="wrap">
-<div class="sec-head"><div class="en">Applications</div><h2>行业应用</h2><div class="bar"></div><p>除尘设备广泛应用于锅炉、建材、木工、冶金等行业粉尘治理</p></div>
-<div class="case-grid">
-<div class="case-card"><img src="assets/img_085.jpg" alt="除尘工程现场" loading="lazy"><div class="cap"><b>除尘工程现场</b><span>大型除尘系统安装现场实景</span></div></div>
-<div class="case-card"><img src="assets/img_086.jpg" alt="砖厂隧道窑除尘" loading="lazy"><div class="cap"><b>砖厂隧道窑除尘</b><span>针对湿度大、温度高、腐蚀性强的窑炉烟气工况</span></div></div>
-</div></div></section>
-<section class="section alt"><div class="wrap">
-<div class="sec-head"><div class="en">News Center</div><h2>新闻中心</h2><div class="bar"></div></div>
-<div class="grid3"><a class="ncard" href="news.html"><div class="thumb"><img src="assets/img_084.jpg" alt="除尘器布袋价格影响因素有哪些" loading="lazy"></div><div class="nbody"><span class="ndate">2020-11-12</span><h3>除尘器布袋价格影响因素有哪些</h3><p>除尘器布袋是布袋除尘器的主要核心部件，在水泥厂、发电厂、钢铁厂、化工厂、炭黑厂、食品加工厂、沥青混凝土搅拌厂等领域都有着重要的使用，市场对于它的……</p></div></a><a class="ncard" href="news.html"><div class="thumb"><div class="ph-txt" style="height:100%;display:flex;align-items:center;justify-content:center;color:#8fb6cc;font-size:26px;font-weight:800">蓝洁</div></div><div class="nbody"><span class="ndate">2020-10-29</span><h3>常见的除尘器布袋所选择的材质是什么</h3><p>不同材质的除尘器布袋在现在……</p></div></a><a class="ncard" href="news.html"><div class="thumb"><div class="ph-txt" style="height:100%;display:flex;align-items:center;justify-content:center;color:#8fb6cc;font-size:26px;font-weight:800">蓝洁</div></div><div class="nbody"><span class="ndate">2020-10-15</span><h3>如何加工布袋除尘器能保证更高的性价比</h3><p>布袋除尘器是除尘设备的一种，它美观环保、运行稳定、除尘效率高、经济效益好、能耗少、噪音低，备受人们欢迎，在矿山、水泥、煤电、钢铁、冶金、塑料、陶……</p></div></a></div>
-<div class="center-btn"><a class="btn dark" href="news.html">查看全部新闻</a></div>
-</div></section>
-<section class="cta-band"><div class="wrap"><div><h2>需要除尘设备选型与报价？</h2><p>把工况告诉我们，工程师按实际工况给出选型方案。</p></div><a class="btn" href="tel:15600000000">☎ 156-0000-0000</a></div></section>
-
-<footer class="site-footer">
-<div class="wrap foot-grid">
-<div><div class="foot-logo"><span class="logo-mark">蓝</span><b style="color:#fff;font-size:16.5px">河北蓝洁除尘设备有限公司</b></div>
-<p>河北蓝洁除尘设备有限公司是制作除尘设备，小型锅炉除尘器、木工除尘器、布袋除尘器、脱硫除尘设备、除尘器布袋，脉冲布袋除尘器，除尘配件等生产企业。我公司采取“依靠科技，不断创新，紧密加工……</p></div>
-<div><h4>快速导航</h4><a href="index.html">首页</a><br><a href="products.html">产品中心</a><br><a href="about.html">关于我们</a><br><a href="news.html">新闻中心</a><br><a href="contact.html">联系我们</a></div>
-<div><h4>产品分类</h4><a href="category-glccq.html">锅炉除尘器</a><br><a href="category-bdccq.html">布袋除尘器</a><br><a href="category-djccq.html">单机除尘器</a><br><a href="category-mgccq.html">木工除尘器</a><br><a href="category-tlccq.html">脱硫除尘器</a><br><a href="category-xfccq.html">旋风除尘器</a><br></div>
-<div><h4>联系我们</h4><p>电话：0317-8300-000<br>手机：156-0000-0000 / 137-0000-0000<br>传真：0317-8046-000<br>邮箱：lanjie-chuchen@example.com<br>联系人：李经理<br>地址：河北省泊头市工业开发区</p></div>
+<div class="h2a"><div class="en">Our Products</div><h2>我们 <b>能做什么</b></h2></div>
+<div class="cols2">
+<div class="serve"><h3>WE SERVE · <b>服务内容</b></h3><ul>
+<li>除尘设备选型与方案设计</li>
+<li>整机生产与配件供应（布袋 / 骨架 / 脉冲阀）</li>
+<li>设备维修、安装与改造</li>
+<li>按场地情况设计符合要求外形的除尘器</li>
+</ul></div>
+<div><h3 style="font-size:20px;margin-bottom:10px">OUR PRODUCTS <span style="color:var(--org)">产品清单</span></h3>
+<div class="plist"><a href="category-glccq.html"><i>&rsaquo;</i>锅炉除尘器（8 款）</a><a href="product-glccq-1.html"><i>&rsaquo;</i>小型锅炉除尘器</a><a href="category-glccq.html"><i>&rsaquo;</i>生物质锅炉除尘器</a><a href="category-bdccq.html"><i>&rsaquo;</i>布袋除尘器（8 款）</a><a href="product-bdccq-55.html"><i>&rsaquo;</i>布袋除尘器</a><a href="category-bdccq.html"><i>&rsaquo;</i>PPC/PPW气箱式脉冲除尘器</a><a href="category-djccq.html"><i>&rsaquo;</i>单机除尘器（8 款）</a><a href="category-djccq.html"><i>&rsaquo;</i>UF单机布袋除尘器</a><a href="product-djccq-67.html"><i>&rsaquo;</i>单机除尘器</a><a href="category-mgccq.html"><i>&rsaquo;</i>木工除尘器（7 款）</a><a href="product-mgccq-9.html"><i>&rsaquo;</i>木工布袋除尘器</a><a href="category-mgccq.html"><i>&rsaquo;</i>家具厂除尘器</a><a href="category-tlccq.html"><i>&rsaquo;</i>脱硫除尘器（6 款）</a><a href="category-tlccq.html"><i>&rsaquo;</i>脱硫除尘设备</a><a href="category-tlccq.html"><i>&rsaquo;</i>锅炉脱硫除尘器</a><a href="category-xfccq.html"><i>&rsaquo;</i>旋风除尘器（6 款）</a><a href="category-xfccq.html"><i>&rsaquo;</i>多管旋风除尘器</a><a href="category-xfccq.html"><i>&rsaquo;</i>CLT/A型旋风除尘器</a><a href="category-ccqbudai.html"><i>&rsaquo;</i>除尘布袋及配件（8 款）</a><a href="category-ccqbudai.html"><i>&rsaquo;</i>涤纶针刺毡除尘布袋</a><a href="category-ccqbudai.html"><i>&rsaquo;</i>氟美斯耐高温针刺毡除尘布袋</a></div></div>
 </div>
+</div></section>
+<section class="section grey"><div class="wrap">
+<div class="h2a"><div class="en">About Us</div><h2>关于 <b>蓝洁</b></h2></div>
+<div class="cols2"><div><img src="assets/img_002.jpg" alt="除尘设备" style="width:100%;height:100%;object-fit:cover;min-height:250px" loading="lazy"></div>
+<div><p style="color:#4a4a4a;margin-bottom:14px">河北蓝洁除尘设备有限公司是制作除尘设备，小型锅炉除尘器、木工除尘器、布袋除尘器、脱硫除尘设备、除尘器布袋，脉冲布袋除尘器，除尘配件等生产企业。我公司采取“依靠科技，不断创新，紧密加工”的质量方针，秉承“诚信经营，品质优良，服务周到”的经营理念，始终坚持“质量第一、价格合理、信守合同、并提供可靠的技术服务，代办托运”的企业宗旨，为广大客户提供更加优惠的产品以及更加优质的服务。</p>
+<a class="sqbtn org" href="tel:15600000000">☎ 156-0000-0000</a></div></div>
+</div></section>
+
+<section class="contacts"><div class="wrap">
+<div><h2>联系 <b>我们</b></h2>
+<div class="crow"><span class="lab">销售热线 FREEPHONE</span><span class="big">156-0000-0000</span>　<span class="big" style="font-size:18px">137-0000-0000</span></div>
+<div class="crow"><span class="lab">电话 / 传真</span>0317-8300-000 / 0317-8046-000</div>
+<div class="crow"><span class="lab">邮箱 E-MAIL</span>lanjie-chuchen@example.com</div>
+<div class="crow"><span class="lab">地址 ADDRESS</span>河北省泊头市工业开发区（联系人：李经理）</div>
+<a class="sqbtn org" href="tel:15600000000">☎ 立即拨打</a></div>
+<div class="photo"><img src="assets/img_002.jpg" alt="除尘设备实景" loading="lazy"></div>
+</div></section>
 <div class="copyright"><div class="wrap"><span>© 河北蓝洁除尘设备有限公司 版权所有</span><span>冀ICP备00000000号-1</span></div></div>
-</footer>
+<div id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</div>
 <div class="callbar"><a href="tel:15600000000">☎ 电话咨询</a><a href="products.html">查看产品</a></div>
 <div style="position:fixed;right:14px;bottom:64px;z-index:999;background:rgba(20,30,40,.82);color:#fff;font-size:12px;padding:6px 12px;border-radius:999px;pointer-events:none">演示样品 · 未经授权禁止复制</div><script>document.addEventListener("contextmenu",function(e){e.preventDefault()});document.addEventListener("copy",function(e){e.preventDefault()});</script></body>
 </html>
