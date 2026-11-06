@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在线下单 · GETPINGTI 网站设计公司</title>
+<meta name="description" content="GETPINGTI 在线下单：填写公司名称与网站域名，在线支付后我们即刻开始为您改版。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+<style>
+.order-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
+.sum-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:30px}
+.sum-card .pname{font-size:21px;font-weight:800}
+.sum-card ul{list-style:none;margin-top:14px}
+.sum-card li{color:#c9ced4;font-size:14px;padding-left:22px;position:relative;margin-top:7px}
+.sum-card li::before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:800}
+.sum-card .prow{display:flex;align-items:baseline;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.sum-card .prow .old{color:#6d757e;text-decoration:line-through}
+.sum-card .prow .now{font-size:32px;font-weight:800}
+.sum-card .prow .now i{font-style:normal;color:var(--acc);font-size:17px}
+.sum-card .promo{color:var(--acc);font-size:13px;letter-spacing:1px}
+.sum-card .next{color:var(--mut);font-size:13.5px;margin-top:16px}
+.pay-note{display:none;border:1px solid rgba(255,90,31,.5);border-radius:12px;padding:16px 18px;color:#ffd9c9;font-size:14px;margin-top:18px}
+.pay-qr{display:none;text-align:center;margin-top:18px}
+.pay-qr img{width:210px;margin:0 auto;border-radius:12px}
+@media(max-width:900px){.order-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="wrap header-in">
+<a class="wordmark" href="index.html">GET<em>PINGTI</em><small>WEB DESIGN STUDIO</small></a>
+<button class="burger" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="菜单">☰</button>
+<nav class="main-nav">
+<a href="index.html">首页</a><a href="service.html">服务项目</a><a href="cases.html">设计案例</a><a href="faq.html">常见问题</a><a href="contact.html">联系我们</a>
+</nav>
+<a class="btn head-cta" href="contact.html">预约咨询</a>
+</div></header>
+
+<div class="page-hero"><div class="wrap">
+<div class="en">Order</div><h1>在线下单</h1>
+<p>填写贵公司的名称与网站域名，完成支付后，我们会在 1 个工作日内与你联系确认，并安排设计与上线。</p>
+</div></div>
+
+<section class="section" style="padding-top:52px"><div class="wrap">
+<div class="order-grid">
+<div class="contact-card form">
+<h3>填写公司信息</h3>
+<form id="orderForm" onsubmit="return pay(this)">
+<label>公司名称 *</label>
+<input name="company" placeholder="如：青岛某某机械有限公司" required>
+<label>公司网站域名 *</label>
+<input name="domain" placeholder="如：www.example.com（没有可填“无”）" required>
+<label>联系人</label>
+<input name="person" placeholder="如：王经理">
+<label>联系电话 / 微信 *</label>
+<input name="phone" placeholder="付款后我们用这个联系你确认" required>
+<label>备注（选填）</label>
+<textarea name="note" rows="3" placeholder="如：想换个颜色、要加新产品等"></textarea>
+<button class="btn" type="submit" id="payBtn">确认并支付</button>
+<div class="pay-note" id="payNote">支付通道正在开通中。你的订单信息已生成——点此<a href="#" id="mailLink" style="color:#fff;font-weight:700;text-decoration:underline">用邮件发送给我们</a>，我们主动联系你完成付款与后续安排。</div>
+<div class="pay-qr" id="payQr"><p style="color:var(--mut);font-size:13.5px;margin-bottom:10px">请用支付宝扫码支付，备注里写上公司名称</p><img src="assets/pay-alipay.png" alt="支付宝收款码"></div>
+</form>
+</div>
+<div class="sum-card">
+<div class="pname" id="pName">网站改版服务</div>
+<ul id="pFeat"></ul>
+<div class="prow"><span class="old" id="pOld"></span><span class="now" id="pNow"></span><span class="promo" id="pPromo"></span></div>
+<p class="next">支付完成后：我们先与你确认网站内容 → 部署新版上线 → 把解析方式同步给你，你也可以委托我们代为解析。</p>
+</div>
+</div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap foot-in">
+<span>© GETPINGTI · 网站设计公司</span>
+<a href="service.html">服务项目</a><a href="cases.html">设计案例</a><a href="contact.html">联系我们</a>
+<span class="right">对公付款可开票，付款时请备注公司名称</span>
+</div></footer>
+<script>
+/* 支付通道配置：拿到企业支付宝「收款链接」后填入 PAY_URL，或把收款码存为 assets/pay-alipay.png，两者填其一即可生效 */
+var PAY_URL = '';
+var PLANS = {
+  redesign: {name:'网站改版服务', feats:['整站重新设计（沿用原站品牌色系）','原站产品、文章、参数完整迁移','电脑 + 手机全端响应式适配','搜索引擎基础收录提交','首年托管部署，一并上线'], old:'¥2,000', now:600, promo:'推广期特价'},
+  design:   {name:'全新网站设计', feats:['从零开始的企业官网','视觉概念 + 页面设计 + 整站搭建','基础内容编排建议'], old:'', now:6800, promo:'起价，按需求评估'},
+  brand:    {name:'品牌官网定制', feats:['品牌视觉体系 + 官网深度定制','专属视觉语言与动效','多端体验设计'], old:'', now:16800, promo:'起价，按需求评估'},
+  func:     {name:'功能型网站开发', feats:['会员 / 商城 / 查询 / 预约等程序功能','数据后台开发'], old:'', now:38000, promo:'起价，按需求评估'},
+  system:   {name:'企业业务系统定制', feats:['带完整业务流程的企业级系统','订单、库存、客户管理一体化'], old:'', now:100000, promo:'起价，按需求评估'}
+};
+var key = new URLSearchParams(location.search).get('plan') || 'redesign';
+var plan = PLANS[key] || PLANS.redesign;
+document.getElementById('pName').textContent = plan.name;
+document.getElementById('pFeat').innerHTML = plan.feats.map(function(x){return '<li>'+x+'</li>'}).join('');
+var oldEl = document.getElementById('pOld');
+if (plan.old) { oldEl.textContent = plan.old; } else { oldEl.style.display = 'none'; }
+document.getElementById('pNow').innerHTML = '<i>¥</i>' + plan.now.toLocaleString('zh-CN');
+document.getElementById('pPromo').textContent = plan.promo;
+document.getElementById('payBtn').textContent = '确认并支付 ¥' + plan.now.toLocaleString('zh-CN');
+function pay(f){
+  var info = '服务：' + plan.name + '（¥' + plan.now.toLocaleString('zh-CN') + '）\n公司：' + f.company.value + '\n域名：' + f.domain.value + '\n联系人：' + f.person.value + '\n电话/微信：' + f.phone.value + '\n备注：' + f.note.value;
+  if (PAY_URL) { location.href = PAY_URL; return false; }
+  var qr = document.getElementById('payQr');
+  var img = qr.querySelector('img');
+  var probe = new Image();
+  probe.onload = function(){ qr.style.display = 'block'; qr.scrollIntoView({behavior:'smooth',block:'center'}); };
+  probe.onerror = function(){
+    var note = document.getElementById('payNote');
+    note.style.display = 'block';
+    document.getElementById('mailLink').href = 'mailto:hello@getpingti.com?subject=' + encodeURIComponent('在线下单 - ' + f.company.value) + '&body=' + encodeURIComponent(info);
+    note.scrollIntoView({behavior:'smooth',block:'center'});
+  };
+  probe.src = img.getAttribute('src');
+  return false;
+}
+</script>
+</body>
+</html>
