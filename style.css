@@ -234,3 +234,5 @@ ul.tick li span,ul.cross li span{color:var(--muted);font-size:14.5px}
   .card:hover,.btn:hover{transform:none}
   html{scroll-behavior:auto}
 }
+
+.amount .was{font-size:.42em;font-weight:400;opacity:.5;margin-right:.35em;vertical-align:.35em}
