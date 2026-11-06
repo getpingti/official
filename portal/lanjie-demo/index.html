@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客户后台 · GETPINGTI 网站设计公司</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.login-box{max-width:420px;margin:0 auto}
+.panel{display:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.kv{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.kv span{color:var(--mut)} .kv b{color:#fff}
+.exp-days{font-size:30px;font-weight:800;color:#fff}
+.exp-days i{font-style:normal;color:var(--acc);font-size:15px}
+.dns-code{background:#0e1013;border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#ffd9c9;word-break:break-all;margin:10px 0}
+.tut li{color:#c9ced4;font-size:14.5px;margin:8px 0 8px 18px}
+.chat{border:1px solid var(--line);border-radius:14px;background:#0e1013;display:flex;flex-direction:column;height:380px;overflow:hidden}
+.chat-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.65}
+.msg.bot{background:#1b1e23;color:#e6e9ec;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--acc);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-in{display:flex;border-top:1px solid var(--line)}
+.chat-in input{flex:1;background:transparent;border:0;color:#fff;padding:13px 16px;font-size:14.5px;outline:none;font-family:inherit}
+.chat-in button{background:var(--acc);color:#fff;border:0;padding:0 22px;font-weight:700;cursor:pointer}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="wrap header-in">
+<a class="wordmark" href="../../index.html">GET<em>PINGTI</em><small>WEB DESIGN STUDIO</small></a>
+<nav class="main-nav"><a href="../../index.html">官网首页</a><a href="../../contact.html">联系我们</a></nav>
+</div></header>
+
+<div class="page-hero"><div class="wrap">
+<div class="en">Client Portal</div><h1>客户后台</h1>
+<p id="heroSub">登录后可查看网站有效期、办理续费、查看域名解析信息，并直接与 AI 客服沟通。</p>
+</div></div>
+
+<section class="section" style="padding-top:48px"><div class="wrap">
+
+<div class="login-box contact-card form" id="loginBox">
+<h3>账号登录</h3>
+<form onsubmit="return doLogin(this)">
+<label>账号（您的网站域名）</label>
+<input name="user" id="userIn" placeholder="如：example.com" required>
+<label>密码</label>
+<input name="pass" id="passIn" type="password" placeholder="付款后由我们为您开通并发送" required>
+<button class="btn" type="submit" style="margin-top:22px;width:100%;justify-content:center">登录</button>
+<p id="loginErr" style="display:none;color:#ff8a70;font-size:13.5px;margin-top:12px">账号或密码不正确，请核对后重试；忘记密码请点页面下方联系客服。</p>
+</form>
+</div>
+
+<div class="panel" id="panel">
+<div class="grid2">
+<div class="contact-card">
+<h3>我的网站</h3>
+<div class="kv"><span>公司</span><b>河北蓝洁除尘设备有限公司</b></div>
+<div class="kv"><span>网站域名</span><b>lanjie-demo.com</b></div>
+<div class="kv"><span>服务项目</span><b>网站改版（含首年托管）</b></div>
+<div class="kv"><span>开通日期</span><b>2026-11-07</b></div>
+<div class="kv"><span>到期日期</span><b>2027-11-07</b></div>
+<p style="margin-top:18px"><span class="exp-days" id="expDays">—</span></p>
+<p style="color:var(--mut);font-size:13.5px">到期前我们会提醒您续费；续费 500 元/年，含托管与每年一次免费小修。不续费也可随时向我们索取整站文件，自行部署。</p>
+<a class="btn" href="../../order.html?plan=renewal" style="margin-top:18px">续费一年 · ¥500</a>
+</div>
+
+<div class="contact-card">
+<h3>域名解析</h3>
+<p>您的新站由我们托管部署。如需把您自己的域名指过来，按下面设置即可（约 10 分钟生效）：</p>
+<div class="dns-code">CNAME 记录：主机记录 www → lanjie.pages.dev（示例值）</div>
+<ol class="tut">
+<li>登录您购买域名的平台（如阿里云、腾讯云）。</li>
+<li>进入「域名解析 / DNS 管理」，添加上面这条记录。</li>
+<li>保存后等待生效，再打开域名确认新站打开。</li>
+</ol>
+<p style="color:var(--mut);font-size:13.5px">不会操作也没关系：把域名平台的账号交给我们，或直接在右侧告诉 AI 客服「帮我解析」，我们代为办理。</p>
+</div>
+</div>
+
+<div class="contact-card" style="margin-top:22px">
+<h3>AI 客服</h3>
+<p style="margin-bottom:14px">关于续费、解析、改内容、加产品……直接问，24 小时在线。</p>
+<div class="chat">
+<div class="chat-log" id="chatLog">
+<div class="msg bot">您好，我是 GETPINGTI 的 AI 客服。您可以问我：我的网站什么时候到期？怎么续费？域名怎么解析？想改网站内容怎么办？</div>
+</div>
+<form class="chat-in" onsubmit="return ask(this)">
+<input name="q" placeholder="输入您的问题…" autocomplete="off">
+<button type="submit">发送</button>
+</form>
+</div>
+</div>
+</div>
+
+</div></section>
+
+<footer class="site-footer"><div class="wrap foot-in">
+<span>© GETPINGTI · 网站设计公司</span>
+<span class="right">客户后台仅供已开通服务的客户使用</span>
+</div></footer>
+<script>
+var ACCOUNT = 'lanjie-demo.com', PWHASH = '0ead2060b65992dca4769af601a1b3a35ef38cfad2c2c465bb160ea764157c5d', END = '2027-11-07';
+async function sha256(t){var b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));return [...new Uint8Array(b)].map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+async function doLogin(f){
+  var u = f.user.value.trim().toLowerCase(), p = f.pass.value;
+  var h = await sha256(p);
+  if ((u === ACCOUNT || u === 'www.' + ACCOUNT) && h === PWHASH){
+    document.getElementById('loginBox').style.display = 'none';
+    document.getElementById('panel').style.display = 'block';
+    var days = Math.ceil((new Date(END + 'T23:59:59') - new Date()) / 86400000);
+    document.getElementById('expDays').innerHTML = days > 0 ? '还剩 <i>约</i> ' + days + ' <i>天</i>' : '已到期，请尽快续费';
+    sessionStorage.setItem('portal-ok', '1');
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+  }
+  return false;
+}
+var QA = [
+  [/到期|有效期|什么时候/, function(){return '您的网站服务到期日是 2027-11-07。到期前我们会主动提醒，续费 500 元/年即可顺延一年，点本页左上方「续费一年」按钮就能办理。'}],
+  [/续费|续期/, function(){return '续费 500 元/年，含整站托管与每年一次免费小修。点本页「续费一年 · ¥500」按钮，填公司信息付款即可，付款后我们把到期日顺延一年并在这里更新。'}],
+  [/解析|域名|绑定/, function(){return '域名解析信息就在本页右上方卡片里：CNAME 记录：主机记录 www → lanjie.pages.dev（示例值）。在域名平台添加这条记录即可；不会操作的话回复「帮我解析」，我们代为办理。'}],
+  [/改|修改|内容|电话|产品|加/, function(){return '改文字、电话、图片，或增加产品、页面：把要改的内容发我这里就行。每年含一次免费小修（或增改合计不超过 5 页），超出部分我们先报价、您确认后再做。'}],
+  [/发票|开票/, function(){return '可以开票。我们是正规设计公司，付款后把开票信息（公司全称、税号）发我这里，发票随后开出。'}],
+  [/人工|真人|电话|联系/, function(){return '我是 AI 客服，常见问题都能答。需要人工处理的事，把情况写在这里并留下电话，我们会在 1 个工作日内联系您；也可以发邮件到 hello@getpingti.com。'}],
+  [/价格|多少钱|费用/, function(){return '您当前的服务是网站改版（含首年托管）。续费 500 元/年；新增页面、产品或功能调整按工作量报价，都是先报价、确认后再做。'}]
+];
+function ask(f){
+  var q = f.q.value.trim(); if(!q) return false;
+  var log = document.getElementById('chatLog');
+  log.insertAdjacentHTML('beforeend', '<div class="msg me"></div>');
+  log.lastChild.textContent = q;
+  var ans = '这个问题我先记下了。您可以换个说法再问我（比如续费、解析、改内容），或者留下电话，我们 1 个工作日内联系您。';
+  for (var i = 0; i < QA.length; i++){ if (QA[i][0].test(q)) { ans = QA[i][1](); break; } }
+  log.insertAdjacentHTML('beforeend', '<div class="msg bot"></div>');
+  log.lastChild.textContent = ans;
+  log.scrollTop = log.scrollHeight;
+  f.q.value = '';
+  return false;
+}
+</script>
+</body>
+</html>
