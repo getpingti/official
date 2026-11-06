@@ -174,3 +174,20 @@ a{color:inherit;text-decoration:none}
 .work,.trio .cell{will-change:transform}
 .glow-num{background:linear-gradient(92deg,#fff 30%,var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
 @media (prefers-reduced-motion:reduce){.marquee .track{animation:none}.hero h1,.hero .en,.hero p,.hero-btns{animation:none}.rv{opacity:1;transform:none}}
+
+/* ---------- 设计画布（首页首屏，纯 CSS 抽象稿） ---------- */
+.canvas{padding:44px 48px 34px;background:linear-gradient(140deg,#101216,#0b0c0e 60%);position:relative;overflow:hidden}
+.canvas::after{content:"";position:absolute;right:-90px;bottom:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,31,.22),transparent 65%)}
+.cv-nav{display:flex;gap:8px;align-items:center}
+.cv-nav i{width:26px;height:9px;border-radius:99px;background:#262b31}
+.cv-nav b{margin-left:auto;width:88px;height:26px;border-radius:99px;background:var(--acc)}
+.cv-h1{font-size:42px;font-weight:800;line-height:1.35;margin:30px 0 18px;letter-spacing:1px}
+.cv-h1 em{font-style:normal;color:var(--acc)}
+.cv-sub{height:11px;border-radius:99px;background:#22262c;width:52%}
+.cv-sub.short{width:36%;margin-top:9px}
+.cv-btn{width:128px;height:38px;border-radius:99px;border:1.5px solid #3a4046;margin-top:24px}
+.cv-cards{display:flex;gap:14px;margin-top:30px}
+.cv-cards i{flex:1;height:86px;border-radius:12px;background:#14171b;border:1px solid #22262c}
+.cv-cards i:nth-child(2){background:linear-gradient(150deg,#1a1d21,#121417)}
+.cv-type{margin-top:22px;font-size:12.5px;letter-spacing:2.5px;color:#6d757e}
+@media(max-width:900px){.canvas{padding:28px 22px}.cv-h1{font-size:27px}.cv-cards i{height:56px}}
