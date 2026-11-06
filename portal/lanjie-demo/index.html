@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>客户后台 · GETPINGTI 网站设计公司</title>
+<title>客户后台 · 方寸设计 FANGCUN DESIGN</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="../../style.css">
 <style>
@@ -29,7 +29,7 @@
 </head>
 <body>
 <header class="site-header"><div class="wrap header-in">
-<a class="wordmark" href="../../index.html">GET<em>PINGTI</em><small>WEB DESIGN STUDIO</small></a>
+<a class="wordmark" href="../../index.html">FANGCUN<em>·</em>方寸设计<small>FANGCUN DESIGN STUDIO</small></a>
 <nav class="main-nav"><a href="../../index.html">官网首页</a><a href="../../contact.html">联系我们</a></nav>
 </div></header>
 
@@ -63,7 +63,14 @@
 <div class="kv"><span>到期日期</span><b>2027-11-07</b></div>
 <p style="margin-top:18px"><span class="exp-days" id="expDays">—</span></p>
 <p style="color:var(--mut);font-size:13.5px">到期前我们会提醒您续费；续费 500 元/年，含托管与每年一次免费小修。不续费也可随时向我们索取整站文件，自行部署。</p>
-<a class="btn" href="../../order.html?plan=renewal" style="margin-top:18px">续费一年 · ¥500</a>
+<p style="margin-top:18px;color:var(--mut);font-size:13.5px">选择续费年限（500 元/年）：</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+<a class="btn ghost" href="../../order.html?plan=renewal&years=1">续 1 年 · ¥500</a>
+<a class="btn ghost" href="../../order.html?plan=renewal&years=2">续 2 年 · ¥1,000</a>
+<a class="btn ghost" href="../../order.html?plan=renewal&years=3">续 3 年 · ¥1,500</a>
+<a class="btn ghost" href="../../order.html?plan=renewal&years=5">续 5 年 · ¥2,500</a>
+<a class="btn" href="../../order.html?plan=renewal&years=10">续 10 年 · ¥5,000</a>
+</div>
 </div>
 
 <div class="contact-card">
@@ -79,12 +86,34 @@
 </div>
 </div>
 
+<div class="grid2" style="margin-top:22px">
+<div class="contact-card">
+<h3>我的订单</h3>
+<div class="kv"><span>2026-11-07 · 网站改版服务</span><b>¥600 已付款</b></div>
+<p style="color:var(--mut);font-size:13px;margin-top:12px">续费成功后，新订单会出现在这里，有效期同步顺延。</p>
+</div>
+<div class="contact-card form">
+<h3>申请开发票</h3>
+<form onsubmit="return invoice(this)">
+<label>公司全称（发票抬头）</label>
+<input name="title" placeholder="如：某某机械有限公司" required>
+<label>纳税人识别号（税号）</label>
+<input name="tax" placeholder="统一社会信用代码" required>
+<label>开票订单</label>
+<input name="ord" placeholder="如：2026 年改版服务 600 元" required>
+<label>发票接收邮箱</label>
+<input name="mail" placeholder="电子发票将发送到这个邮箱" required>
+<button class="btn" type="submit" style="margin-top:18px">提交开票申请</button>
+</form>
+</div>
+</div>
+
 <div class="contact-card" style="margin-top:22px">
 <h3>AI 客服</h3>
 <p style="margin-bottom:14px">关于续费、解析、改内容、加产品……直接问，24 小时在线。</p>
 <div class="chat">
 <div class="chat-log" id="chatLog">
-<div class="msg bot">您好，我是 GETPINGTI 的 AI 客服。您可以问我：我的网站什么时候到期？怎么续费？域名怎么解析？想改网站内容怎么办？</div>
+<div class="msg bot">您好，我是方寸设计的 AI 客服。您可以问我：我的网站什么时候到期？怎么续费？域名怎么解析？想改网站内容怎么办？</div>
 </div>
 <form class="chat-in" onsubmit="return ask(this)">
 <input name="q" placeholder="输入您的问题…" autocomplete="off">
@@ -97,10 +126,15 @@
 </div></section>
 
 <footer class="site-footer"><div class="wrap foot-in">
-<span>© GETPINGTI · 网站设计公司</span>
+<span>© 方寸设计 FANGCUN DESIGN · 网站设计公司</span>
 <span class="right">客户后台仅供已开通服务的客户使用</span>
 </div></footer>
 <script>
+function invoice(f){
+  var body = '开票抬头：' + f.title.value + '\n税号：' + f.tax.value + '\n开票订单：' + f.ord.value + '\n接收邮箱：' + f.mail.value + '\n客户：河北蓝洁除尘设备有限公司（lanjie-demo.com）';
+  location.href = 'mailto:hello@fangcundesign.com?subject=' + encodeURIComponent('开票申请 - 河北蓝洁除尘设备有限公司') + '&body=' + encodeURIComponent(body);
+  return false;
+}
 var ACCOUNT = 'lanjie-demo.com', PWHASH = '0ead2060b65992dca4769af601a1b3a35ef38cfad2c2c465bb160ea764157c5d', END = '2027-11-07';
 async function sha256(t){var b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));return [...new Uint8Array(b)].map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
 async function doLogin(f){
@@ -123,7 +157,7 @@ var QA = [
   [/解析|域名|绑定/, function(){return '域名解析信息就在本页右上方卡片里：CNAME 记录：主机记录 www → lanjie.pages.dev（示例值）。在域名平台添加这条记录即可；不会操作的话回复「帮我解析」，我们代为办理。'}],
   [/改|修改|内容|电话|产品|加/, function(){return '改文字、电话、图片，或增加产品、页面：把要改的内容发我这里就行。每年含一次免费小修（或增改合计不超过 5 页），超出部分我们先报价、您确认后再做。'}],
   [/发票|开票/, function(){return '可以开票。我们是正规设计公司，付款后把开票信息（公司全称、税号）发我这里，发票随后开出。'}],
-  [/人工|真人|电话|联系/, function(){return '我是 AI 客服，常见问题都能答。需要人工处理的事，把情况写在这里并留下电话，我们会在 1 个工作日内联系您；也可以发邮件到 hello@getpingti.com。'}],
+  [/人工|真人|电话|联系/, function(){return '我是 AI 客服，常见问题都能答。需要人工处理的事，把情况写在这里并留下电话，我们会在 1 个工作日内联系您；也可以发邮件到 hello@fangcundesign.com。'}],
   [/价格|多少钱|费用/, function(){return '您当前的服务是网站改版（含首年托管）。续费 500 元/年；新增页面、产品或功能调整按工作量报价，都是先报价、确认后再做。'}]
 ];
 function ask(f){
