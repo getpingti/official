@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>在线下单 · 方寸设计</title>
-<meta name="description" content="方寸设计在线下单：填写公司名称与网站域名，在线支付后我们即刻开始为您改版。">
+<meta name="description" content="方寸设计在线下单：支付宝扫码支付，金额已经设好；付款后填写公司名称与网站域名，其余交给我们。">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -23,6 +23,13 @@
 .pay-note{display:none;border:1px solid rgba(255,90,31,.5);border-radius:12px;padding:16px 18px;color:#ffd9c9;font-size:14px;margin-top:18px}
 .pay-qr{display:none;text-align:center;margin-top:18px}
 .pay-qr img{width:210px;margin:0 auto;border-radius:12px}
+.step-tag{display:inline-block;font-size:12.5px;letter-spacing:2px;color:var(--acc);border:1px solid rgba(255,90,31,.45);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+.qr-big{display:none;text-align:center;padding:10px 0 4px}
+.qr-big img{width:230px;margin:0 auto;border-radius:14px;background:#fff;padding:10px}
+.qr-big .amt{font-size:30px;font-weight:800;margin-top:14px}
+.qr-big .amt i{font-style:normal;color:var(--acc);font-size:18px}
+.qr-wait{display:none;border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--mut);font-size:14.5px;text-align:center}
+.sent-note{display:none;border:1px solid rgba(120,200,140,.45);border-radius:12px;padding:16px 18px;color:#cdeecd;font-size:14px;margin-top:18px}
 @media(max-width:900px){.order-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -38,12 +45,46 @@
 
 <div class="page-hero"><div class="wrap">
 <div class="en">Order</div><h1>在线下单</h1>
-<p>填写贵公司的名称与网站域名，完成支付后，我们会在 1 个工作日内与你联系确认，并安排设计与上线。</p>
+<p id="heroText">两步完成：先扫码支付，再填一张简短的信息表。没有注册，没有多余打扰。</p>
 </div></div>
 
 <section class="section" style="padding-top:52px"><div class="wrap">
 <div class="order-grid">
+<div>
+<!-- 新流程（改版 600）：先付款，后填表 -->
+<div id="flowNew" style="display:none">
 <div class="contact-card form">
+<span class="step-tag">第一步 · 扫码支付</span>
+<div class="qr-big" id="qrBig">
+<img src="assets/pay-alipay.png" alt="支付宝收款码（600 元）">
+<div class="amt"><i>¥</i>600</div>
+<p style="color:var(--mut);font-size:14px;margin-top:8px">打开支付宝「扫一扫」即可付款——金额已经设好，不用输入，也不用备注。<br>付完后完成第二步，其余交给我们。</p>
+</div>
+<div class="qr-wait" id="qrWait">收款码正在最后确认中——先完成第二步的信息表，我们会主动联系你付款，不会让你等。</div>
+</div>
+<div class="contact-card form" style="margin-top:26px">
+<span class="step-tag">第二步 · 付款后填写</span>
+<h3>告诉我们这笔付款是谁的</h3>
+<form id="postForm" onsubmit="return postPay(this)">
+<label>公司名称 *</label>
+<input name="company" placeholder="如：青岛某某机械有限公司" required>
+<label>公司网站域名 *</label>
+<input name="domain" placeholder="如：www.example.com（没有可填“无”）" required>
+<label>联系人</label>
+<input name="person" placeholder="如：王经理">
+<label>联系电话 / 微信 *</label>
+<input name="phone" placeholder="我们用这个联系你确认内容" required>
+<label>支付宝交易号（选填）</label>
+<input name="tradeno" placeholder="在支付宝账单详情里，填了对账更快">
+<label>备注（选填）</label>
+<textarea name="note" rows="3" placeholder="如：想换个颜色、要加新产品等"></textarea>
+<button class="btn" type="submit">提交信息</button>
+<div class="sent-note" id="sentNote">已为你打开邮件发送窗口，点「发送」即可。若没有弹出，把上面信息直接发到 hello@fangcundesign.com 也一样，我们收到后 1 个工作日内联系你。</div>
+</form>
+</div>
+</div>
+<!-- 旧流程（其他档位）：先填表，后支付/咨询 -->
+<div class="contact-card form" id="flowOld">
 <h3>填写公司信息</h3>
 <form id="orderForm" onsubmit="return pay(this)">
 <label>公司名称 *</label>
@@ -65,11 +106,12 @@
 <div class="pay-qr" id="payQr"><p style="color:var(--mut);font-size:13.5px;margin-bottom:10px">请用支付宝扫码支付，备注里写上公司名称</p><img src="assets/pay-alipay.png" alt="支付宝收款码"></div>
 </form>
 </div>
+</div>
 <div class="sum-card">
 <div class="pname" id="pName">网站改版服务</div>
 <ul id="pFeat"></ul>
 <div class="prow"><span class="old" id="pOld"></span><span class="now" id="pNow"></span><span class="promo" id="pPromo"></span></div>
-<p class="next">支付完成后：我们先与你确认网站内容 → 部署新版上线 → 把解析方式同步给你，你也可以委托我们代为解析。</p>
+<p class="next">付款并提交信息后：我们在 1 个工作日内与你联系确认网站内容 → 部署新版上线 → 把解析方式同步给你，你也可以委托我们代为解析。</p>
 </div>
 </div>
 </div></section>
@@ -77,10 +119,10 @@
 <footer class="site-footer"><div class="wrap foot-in">
 <span>© 方寸设计 FANGCUN DESIGN · 网站设计公司</span>
 <a href="service.html">服务项目</a><a href="about.html">关于我们</a><a href="contact.html">联系我们</a>
-<span class="right">对公付款可开票，付款时请备注公司名称</span>
+<span class="right">对公付款 · 可开发票</span>
 </div></footer>
 <script>
-/* 支付通道配置：拿到企业支付宝「收款链接」后填入 PAY_URL，或把收款码存为 assets/pay-alipay.png，两者填其一即可生效 */
+/* 支付配置：改版 600 为固定金额收款码图片 assets/pay-alipay.png（金额已锁定 600，客户无需输入）；PAY_URL 为其他档位预留的收款链接 */
 var PAY_URL = '';
 var PLANS = {
   redesign: {name:'网站改版服务', feats:['整站重新设计（沿用原站品牌色系）','原站产品、文章、参数完整迁移','电脑 + 手机全端响应式适配','搜索引擎基础收录提交','首年托管部署，一并上线'], old:'¥2,000', now:600, promo:'推广期特价'},
@@ -98,6 +140,25 @@ var oldEl = document.getElementById('pOld');
 if (plan.old) { oldEl.textContent = plan.old; } else { oldEl.style.display = 'none'; }
 document.getElementById('pNow').innerHTML = '<i>¥</i>' + plan.now.toLocaleString('zh-CN');
 document.getElementById('pPromo').textContent = plan.promo;
+
+/* 改版 600 走新流程：先扫码付款，后填信息表 */
+if (key === 'redesign') {
+  document.getElementById('flowNew').style.display = 'block';
+  document.getElementById('flowOld').style.display = 'none';
+  var probe = new Image();
+  probe.onload = function(){ document.getElementById('qrBig').style.display = 'block'; };
+  probe.onerror = function(){ document.getElementById('qrWait').style.display = 'block'; };
+  probe.src = 'assets/pay-alipay.png';
+} else {
+  document.getElementById('heroText').textContent = '填写贵公司的名称与网站域名，完成支付后，我们会在 1 个工作日内与你联系确认，并安排设计与上线。';
+}
+function postPay(f){
+  var info = '服务：网站改版服务（¥600，已支付，待核对）\n公司：' + f.company.value + '\n域名：' + f.domain.value + '\n联系人：' + f.person.value + '\n电话/微信：' + f.phone.value + '\n支付宝交易号：' + f.tradeno.value + '\n备注：' + f.note.value;
+  document.getElementById('sentNote').style.display = 'block';
+  location.href = 'mailto:hello@fangcundesign.com?subject=' + encodeURIComponent('改版订单信息 - ' + f.company.value) + '&body=' + encodeURIComponent(info);
+  return false;
+}
+
 var years = 1;
 var wantYears = parseInt(new URLSearchParams(location.search).get('years') || '0', 10);
 function refreshPayBtn(){
@@ -125,7 +186,7 @@ if (plan.consult) {
     yb.appendChild(b);
   });
   refreshPayBtn();
-} else {
+} else if (key !== 'redesign') {
   document.getElementById('payBtn').textContent = '确认并支付 ¥' + plan.now.toLocaleString('zh-CN');
 }
 function pay(f){
@@ -133,15 +194,15 @@ function pay(f){
   if (PAY_URL && !plan.consult) { location.href = PAY_URL; return false; }
   var qr = document.getElementById('payQr');
   var img = qr.querySelector('img');
-  var probe = new Image();
-  probe.onload = function(){ qr.style.display = 'block'; qr.scrollIntoView({behavior:'smooth',block:'center'}); };
-  probe.onerror = function(){
+  var probe2 = new Image();
+  probe2.onload = function(){ qr.style.display = 'block'; qr.scrollIntoView({behavior:'smooth',block:'center'}); };
+  probe2.onerror = function(){
     var note = document.getElementById('payNote');
     note.style.display = 'block';
     document.getElementById('mailLink').href = 'mailto:hello@fangcundesign.com?subject=' + encodeURIComponent('在线下单 - ' + f.company.value) + '&body=' + encodeURIComponent(info);
     note.scrollIntoView({behavior:'smooth',block:'center'});
   };
-  probe.src = img.getAttribute('src');
+  probe2.src = img.getAttribute('src');
   return false;
 }
 </script>
