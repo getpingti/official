@@ -72,7 +72,7 @@ body{padding-top:40px !important}
 <div class="fc-ok" id="fc-step2">
 <div style="font-size:40px">🎉</div>
 <div class="big">恭喜！你的网站正式开通</div>
-<p>联系方式已全部解锁，网站已经上线。<br>下一步：用「用户名 + 自设密码 + 本激活码」绑定你的管理后台，即可自助修改联系方式、绑定老域名、查看有效期与续费。</p>
+<p>联系方式已全部解锁，网站已经即时开通在你的专属二级域名上（地址见激活邮件）。赠送的 .cc 域名将在 48 小时内注册开通并通知你。<br>下一步：用「用户名 + 自设密码 + 本激活码」绑定你的管理后台，即可自助修改联系方式、绑定老域名、查看有效期与续费。</p>
 <p style="margin-top:12px"><a href="/portal/lanjie-demo/">进入客户后台原型 →</a></p>
 </div>
 </div></div>
@@ -80,8 +80,14 @@ body{padding-top:40px !important}
 
 <script>
 (function(){
-var CODE="DUST-2026",done=false;
+var CODE="DUST-2026",done=false,KEY="fc_act_dust";
 var modal=document.getElementById('fc-modal');
+function setDoneUI(){
+  document.querySelectorAll('.fc-lock').forEach(function(s){s.textContent=s.getAttribute('data-v');s.classList.add('fc-on');});
+  var bar=document.getElementById('fc-bar');bar.classList.add('done');
+  bar.innerHTML='<span>🎉 <b>网站已开通</b> · 联系方式已解锁 — 后台可自助修改联系方式、绑定老域名</span>';
+}
+if(localStorage.getItem(KEY)==='1'){done=true;setDoneUI();}
 function openM(){if(done)return;modal.classList.add('open');}
 function closeM(){modal.classList.remove('open');}
 document.addEventListener('click',function(e){
@@ -110,9 +116,8 @@ document.getElementById('fc-go').addEventListener('click',function(){
   var err=document.getElementById('fc-err');
   if(v!==CODE){err.textContent='激活码不正确，请核对后重试（原型测试码见页面顶部）。';var card=document.getElementById('fc-card');card.classList.remove('fc-shake');void card.offsetWidth;card.classList.add('fc-shake');return;}
   done=true;
-  document.querySelectorAll('.fc-lock').forEach(function(s){s.textContent=s.getAttribute('data-v');s.classList.add('fc-on');});
-  var bar=document.getElementById('fc-bar');bar.classList.add('done');
-  bar.innerHTML='<span>🎉 <b>网站已开通</b> · 联系方式已解锁 — 后台可自助修改联系方式、绑定老域名</span>';
+  localStorage.setItem(KEY,'1');
+  setDoneUI();
   document.getElementById('fc-step1').style.display='none';
   document.getElementById('fc-step2').style.display='block';
   confetti();
